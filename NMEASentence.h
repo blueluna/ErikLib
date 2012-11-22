@@ -27,6 +27,7 @@ public:
 
     size_t 	write(uint8_t);
     size_t 	write(const uint8_t *buffer, size_t size);
+    size_t 	comma();
 
     size_t 	printTo(Print& p) const;
 };

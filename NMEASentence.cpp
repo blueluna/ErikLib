@@ -39,6 +39,11 @@ size_t NMEASentence::write(const uint8_t *b, size_t s)
 	return 0;
 }
 
+size_t NMEASentence::comma()
+{
+	return write(0x2c);
+}
+
 size_t NMEASentence::printTo(Print& p) const
 {
 	size_t count = p.write('$');
