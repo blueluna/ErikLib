@@ -4,7 +4,6 @@
 * Licensed under the MIT license.
 */
 
-
 #ifndef	ERIKLIB_BUTTON_H
 #define ERIKLIB_BUTTON_H
 

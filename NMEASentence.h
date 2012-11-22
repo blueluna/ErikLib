@@ -10,15 +10,14 @@
 #include <inttypes.h>
 #include <Print.h>
 #include <Printable.h>
+#include "Buffer.h"
 
 class NMEASentence
 	: public Print
 	, public Printable
 {
 protected:
-	size_t 	bufferCapacity;
-	uint8_t *buffer;
-	size_t 	bufferCount;
+	Buffer  buffer;
 
 public:
 	NMEASentence(size_t capacity);

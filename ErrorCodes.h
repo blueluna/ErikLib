@@ -1,0 +1,37 @@
+/*
+* ErikLib Error Codes
+* 2012 (c) Erik Svensson <erik.public@gmail.com>
+* Licensed under the MIT license.
+*/
+
+#ifndef ERIKLIB_ERRORCODES_H
+#define ERIKLIB_ERRORCODES_H
+
+enum errors_e {
+    E_SUCCESS				= 0,
+    E_ERROR 		   	    = 0x00000001,
+	E_SYSTEM_ERROR,
+    E_OUT_OF_MEMORY,
+    E_INVALID_VALUE,
+    E_INVALID_TYPE,
+    E_INVALID_ARGUMENT,
+    E_INVALID_STORAGE,
+	E_INVALID_DEVICE,
+    E_TYPE_MISMATCH,
+    E_NOT_FOUND,
+    E_ALREADY_EXISTS,
+    E_NOT_IMPLEMENTED,
+    E_BUFFER_EMPTY,
+    E_BUFFER_FULL,
+    E_END_OF_FILE,
+    E_READ_ONLY,
+    E_TIMEOUT,
+	E_RESTRICTED_ACCESS,
+	E_NOT_ENOUGH_DATA,
+    E_FILE_NOT_FOUND,
+    E_INVALID_SIZE,
+    E_INVALID_CHECKSUM,
+	E_MODULE_ERROR          = 0x40000000
+};
+
+#endif // ERIKLIB_ERRORCODES_H

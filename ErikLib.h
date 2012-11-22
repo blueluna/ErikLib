@@ -10,6 +10,7 @@
 #include <inttypes.h>
 #include <stdio.h> // for size_t
 
+#include "Buffer.h"
 #include "NMEASentence.h"
 #include "Button.h"
 
