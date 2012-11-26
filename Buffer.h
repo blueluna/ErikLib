@@ -8,15 +8,16 @@
 #define ERIKLIB_BUFFER_H
 
 #include <inttypes.h>
-#include <stdio.h> // for size_t
+#include <Arduino.h>
+
 #include "ErrorCodes.h"
 
 class Buffer
 {
 protected:
-	size_t      alloc_size;
-	size_t     	buffer_size;
-	size_t    	buffer_used;
+	int16_t     alloc_size;
+	int16_t     buffer_size;
+	int16_t    	buffer_used;
 	uint8_t    	*buffer_data;
 
 public:
@@ -26,7 +27,7 @@ public:
 	 * when the buffer is dynamic sized the size of the buffer will be a
 	 * multiple of alloc_chunk_size.
 	 */
-	Buffer(const size_t size, const size_t alloc_chunk_size = 64);
+	Buffer(const int16_t size, const int16_t alloc_chunk_size = 64);
 	~Buffer();
 
 	void    Destroy();
@@ -37,25 +38,25 @@ public:
 	 * when the buffer is dynamic sized the size of the buffer will be a
 	 * multiple of alloc_chunk_size.
 	 */
-	int32_t Create(const size_t size = 0);
+	int16_t Create(const int16_t size = 0);
 
-	inline size_t Size() const
+	inline int16_t Size() const
 	{
 		return buffer_size;
 	}
 
-	inline size_t Free() const
+	inline int16_t Free() const
 	{
 		return buffer_size - buffer_used;
 	}
 
-	inline size_t Used() const
+	inline int16_t Used() const
 	{
 		return buffer_used;
 	}
 
-	int32_t Read(uint8_t *data, const size_t len);
-	int32_t Write(const uint8_t *data, const size_t len);
+	int16_t Read(uint8_t *data, const int16_t len);
+	int16_t Write(const uint8_t *data, const int16_t len);
 
 	void Clear()
 	{
@@ -73,8 +74,12 @@ public:
 		return buffer_data;
 	}
 
+	int16_t Transfer(Buffer &other, const int16_t len);
+
+	int16_t Transfer(Stream &stream);
+
 protected:
-	int32_t Resize(const size_t minsize);
+	int16_t Resize(const int16_t minsize);
 };
 
 #endif // ERIKLIB_BUFFER_H

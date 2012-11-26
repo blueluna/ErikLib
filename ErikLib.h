@@ -12,6 +12,7 @@
 
 #include "Buffer.h"
 #include "NMEASentence.h"
+#include "NMEAParser.h"
 #include "Button.h"
 
 class ErikLib

@@ -9,7 +9,7 @@
 
 enum errors_e {
     E_SUCCESS				= 0,
-    E_ERROR 		   	    = 0x00000001,
+    E_ERROR 		   	    = 0x0001,
 	E_SYSTEM_ERROR,
     E_OUT_OF_MEMORY,
     E_INVALID_VALUE,
@@ -31,7 +31,7 @@ enum errors_e {
     E_FILE_NOT_FOUND,
     E_INVALID_SIZE,
     E_INVALID_CHECKSUM,
-	E_MODULE_ERROR          = 0x40000000
+	E_MODULE_ERROR          = 0x4000
 };
 
 #endif // ERIKLIB_ERRORCODES_H
