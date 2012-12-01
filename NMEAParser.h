@@ -22,6 +22,7 @@ protected:
 	Buffer     	sentence;
 	int16_t     sentenceFields[8];
 	uint8_t     tokens;
+	uint8_t     token[16];
 
 public:
 	NMEAParser(const int16_t capacity);
@@ -33,7 +34,7 @@ public:
 	inline const Buffer& GetSentence() { return sentence; }
 
 	uint8_t Tokens() const { return tokens; }
-	const uint8_t* Token(const uint8_t index, int16_t &len) const;
+	const uint8_t* Token(const uint8_t index, int16_t &len);
 
 	void Clear() { sentence.Clear(); }
 

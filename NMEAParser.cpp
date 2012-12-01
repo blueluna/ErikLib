@@ -113,6 +113,7 @@ int16_t NMEAParser::ParseSome()
 			for (uint8_t n = 0; n < 8; n++) {
 				if (delimterPositions[n] >= 0) {
 					sentenceFields[n] = delimterPositions[n] - first;
+					delimterPositions[n] = -1;
 				}
 				else {
 					tokens = n;
@@ -134,10 +135,14 @@ int16_t NMEAParser::ParseSome()
 	return result;
 }
 
-const uint8_t* NMEAParser::Token(const uint8_t index, int16_t &len) const
+const uint8_t* NMEAParser::Token(const uint8_t index, int16_t &len)
 {
+	len = 0;
 	if (index >= tokens) {
-		len = 0;
+		return 0;
+	}
+	int16_t pos = sentenceFields[index];
+	if (pos < 0) {
 		return 0;
 	}
 	if (index == (tokens - 1)) {
@@ -146,5 +151,11 @@ const uint8_t* NMEAParser::Token(const uint8_t index, int16_t &len) const
 	else {
 		len = sentenceFields[index+1] - sentenceFields[index] - 1;
 	}
-	return sentence.Peek() + sentenceFields[index];
+	if (len >= 16) {
+		len = 0;
+		return 0;
+	}
+	memcpy(token, sentence.Peek() + sentenceFields[index], len);
+	token[len] = 0;
+	return token;
 }
