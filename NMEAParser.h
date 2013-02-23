@@ -18,11 +18,11 @@ protected:
 	int16_t		sentenceEnd;
 	uint8_t		sentenceChecksum;
 	uint8_t     delimeterIndex;
-	int16_t     delimterPositions[8];
+	int16_t     delimterPositions[16];
 	Buffer     	sentence;
-	int16_t     sentenceFields[8];
+	int16_t     sentenceFields[16];
 	uint8_t     tokens;
-	uint8_t     token[16];
+	uint8_t     token[32];
 
 public:
 	NMEAParser(const int16_t capacity);

@@ -18,7 +18,7 @@ NMEAParser::NMEAParser(const int16_t capacity)
 	, delimeterIndex(0)
 	, tokens(0)
 {
-	for (int16_t n = 0; n < 8; n++) {
+	for (int16_t n = 0; n < 16; n++) {
 		delimterPositions[n] = -1;
 		sentenceFields[n] = -1;
 	}
@@ -71,7 +71,7 @@ int16_t NMEAParser::ParseSome()
 		}
 		// mark when comma is found
 		if (*ptr == 0x2C && sentenceStart > -1) {
-			if (delimeterIndex < 8) {
+			if (delimeterIndex < 16) {
 				delimterPositions[delimeterIndex] = (parserPosition + 1);
 				delimeterIndex++;
 			}
@@ -110,7 +110,7 @@ int16_t NMEAParser::ParseSome()
 			sentence.Transfer(parseBuffer, sentenceEnd - first);
 			parseBuffer.Read(0, endOfLine - sentenceEnd);
 
-			for (uint8_t n = 0; n < 8; n++) {
+			for (uint8_t n = 0; n < 16; n++) {
 				if (delimterPositions[n] >= 0) {
 					sentenceFields[n] = delimterPositions[n] - first;
 					delimterPositions[n] = -1;
@@ -151,7 +151,7 @@ const uint8_t* NMEAParser::Token(const uint8_t index, int16_t &len)
 	else {
 		len = sentenceFields[index+1] - sentenceFields[index] - 1;
 	}
-	if (len >= 16) {
+	if (len >= 32) {
 		len = 0;
 		return 0;
 	}
