@@ -34,6 +34,9 @@ int16_t NMEAParser::Parse(Stream &stream)
 	if (result < 0) {
 		result = -result;
 	}
+	else if (result == 0) {
+		result = E_NO_DATA;
+	}
 	else {
 		result = ParseSome();
 	}

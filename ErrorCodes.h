@@ -31,6 +31,7 @@ enum errors_e {
     E_FILE_NOT_FOUND,
     E_INVALID_SIZE,
     E_INVALID_CHECKSUM,
+    E_NO_DATA,
 	E_MODULE_ERROR          = 0x4000
 };
 
